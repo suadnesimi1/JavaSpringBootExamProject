@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>University Management System</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-2" align="center">
+
+    <h3>Student List</h3>
+    <table style="width:80%" border="1"
+           class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>Faculty</th>
+            <th>University</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student:${student}">
+            <td th:text="${studentStat.name}"></td>
+            <td th:text="${studentStat.email}"></td>
+            <td th:text="${studentStat.course}"></td>
+            <td th:text="${studentStat.faculty}"></td>
+            <td th:text="${studentStat.university}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
