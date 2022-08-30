@@ -9,5 +9,5 @@ import java.awt.print.Pageable;
 import java.util.List;
 
 public interface StudentRepository extends PagingAndSortingRepository<Student,Long> {
-    List<Student>findStudentsByName(String name,Pageable pageable);
+    List<Student>findStudentsByName(String name,Pageable pageable,String sortBy);
 }

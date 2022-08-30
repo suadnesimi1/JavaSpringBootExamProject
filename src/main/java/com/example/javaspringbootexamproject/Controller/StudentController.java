@@ -30,11 +30,11 @@ public class StudentController {
     }
 
     @GetMapping("/all")
-    public List<Student> getAllStudents(@RequestParam(value = "filter", required = false) String filter,
-                                                     @RequestParam(value = "page", required = false) String page,
+    public List<Student> getAllStudents(@RequestParam(value = "filter", required = false) String name,
+                                                     @RequestParam(value = "page", required = false) Pageable page,
                                                      @RequestParam(value = "sortNy", required = false) String sortBy) {
 
-        return studentRepository.findStudentsByName();
+        return studentRepository.findStudentsByName(name,page,sortBy);
 
 
     }
