@@ -23,11 +23,6 @@ public class University {
     @OneToMany(mappedBy = "university", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Student> students;
 
-
-    public University() {
-
-    }
-
     @Autowired
     public University(Long id, String name, List<Faculty> faculty) {
         this.id = id;

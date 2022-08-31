@@ -22,19 +22,15 @@ import java.util.Map;
 @RestController
 @RequestMapping("/student")
 public class StudentController {
+
     @Autowired
     StudentRepository studentRepository;
 
-    public StudentController() {
 
-    }
 
     @GetMapping("/all")
-    public List<Student> getAllStudents(@RequestParam(value = "filter", required = false) String name,
-                                                     @RequestParam(value = "page", required = false) Pageable page,
-                                                     @RequestParam(value = "sortNy", required = false) String sortBy) {
-
-        return studentRepository.findStudentsByName(name,page,sortBy);
+    public List<Student> getAllStudents(){
+        return studentRepository.findAll();
 
 
     }
@@ -44,6 +40,9 @@ public class StudentController {
         return studentRepository.findById(id).map(student -> {
                     student.setId(student.getId());
                     student.setName(student.getName());
+                    student.setCourses(student.getCourses());
+                    student.setFaculty(student.getFaculty());
+                    student.setUniversity(student.getUniversity());
                     return studentRepository.save(student);
                 })
                 .orElseGet(() -> {

@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("/university")
 public class UniversityController {
 
-    @Autowired
+
     UniversityRepository universityRepository;
 
     @GetMapping("/all")

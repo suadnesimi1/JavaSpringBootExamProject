@@ -1,30 +1,29 @@
 package com.example.javaspringbootexamproject.Controller;
 
 import com.example.javaspringbootexamproject.Domain.Course;
+import com.example.javaspringbootexamproject.Domain.Student;
+import com.example.javaspringbootexamproject.Domain.University;
 import com.example.javaspringbootexamproject.Repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
 @RequestMapping("/course")
 public class CourseController {
+
     @Autowired
     CourseRepository courseRepository;
 
-    public CourseController() {
-
-    }
 
     @GetMapping("/all")
-    public List<Course> getAllCourses(Model model) {
+    public List<Course>getAllCourses(){
         return courseRepository.findAll();
     }
-
-
     @PutMapping("/course/{id}")
     public Course updateCourse(@RequestBody Course updateCourse, @PathVariable Long id) {
         return courseRepository.findById(id).map(course -> {
