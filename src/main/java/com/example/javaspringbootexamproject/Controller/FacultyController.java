@@ -1,12 +1,10 @@
 package com.example.javaspringbootexamproject.Controller;
 
-
-import com.example.javaspringbootexamproject.Domain.Course;
 import com.example.javaspringbootexamproject.Domain.Faculty;
 import com.example.javaspringbootexamproject.Repository.FacultyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +13,7 @@ import java.util.List;
 @RequestMapping("/faculty")
 public class FacultyController {
 
+    @Autowired
     FacultyRepository facultyRepository;
     FacultyController(){
 
@@ -27,7 +26,7 @@ public class FacultyController {
 
 
     @PutMapping("/faculty/{id}")
-    public Faculty updateFaculty(@RequestBody Faculty updateFaculty, @PathVariable Long id) {
+    public Faculty updateFaculty(@RequestBody Faculty updateFaculty, @PathVariable int id) {
         return facultyRepository.findById(id).map(faculty -> {
                     faculty.setId(faculty.getId());
                     faculty.setName(faculty.getName());
@@ -46,7 +45,7 @@ public class FacultyController {
     }
 
     @DeleteMapping("/faculty/{id}")
-    public void deleteFaculty(@PathVariable Long id) {
+    public void deleteFaculty(@PathVariable int id) {
         facultyRepository.deleteById(id);
     }
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="ISO-8859-1">
     <title>University Management System</title>
     <link rel="stylesheet"
@@ -8,6 +9,7 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
 </head>
+
 <body>
 <div class="container my-2" align="center">
 
@@ -24,15 +26,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="student:${student}">
-            <td th:text="${studentStat.name}"></td>
-            <td th:text="${studentStat.email}"></td>
-            <td th:text="${studentStat.course}"></td>
-            <td th:text="${studentStat.faculty}"></td>
-            <td th:text="${studentStat.university}"></td>
+        <tr th:each="student: ${students}">
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.course}"></td>
+            <td th:text="${student.faculty}"></td>
+            <td th:text="${student.university}"></td>
         </tr>
         </tbody>
     </table>
 </div>
+
 </body>
+
 </html>

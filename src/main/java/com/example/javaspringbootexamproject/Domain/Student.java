@@ -1,6 +1,7 @@
 package com.example.javaspringbootexamproject.Domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 
 
 import javax.persistence.*;
@@ -9,13 +10,12 @@ import java.util.List;
 import java.util.List;
 
 @Entity
-@Table(name = "student")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @Column(name = "name")
+
     private String name;
 
 
@@ -25,12 +25,12 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     List<Course> courses;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "university_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "university_id")
     private University university;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "faculty_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
     public Student() {
@@ -38,7 +38,7 @@ public class Student {
     }
 
     @Autowired
-    public Student(Long id, String name, List<Course> courses, University university, Faculty faculty) {
+    public Student(int id, String name, List<Course> courses, University university, Faculty faculty) {
         this.id = id;
         this.name = name;
         this.courses = courses;
@@ -46,11 +46,11 @@ public class Student {
         this.faculty = faculty;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

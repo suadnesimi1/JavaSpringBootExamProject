@@ -28,15 +28,19 @@ public class StudentController {
 
 
 
-    @GetMapping("/all")
-    public List<Student> getAllStudents(){
+    @GetMapping("/allStudentHTML")
+    public String getStudentHTML(Model model){
+        List<Student>studentList=studentRepository.findAll();
+        model.addAttribute("students",studentList);
+        return "studentList";
+    }
+    @GetMapping("all")
+    public List<Student>getStudent(){
         return studentRepository.findAll();
-
-
     }
 
     @PutMapping("/student/{id}")
-    public Student updateStudent(@RequestBody Student updateStudent, @PathVariable Long id) {
+    public Student updateStudent(@RequestBody Student updateStudent, @PathVariable int id) {
         return studentRepository.findById(id).map(student -> {
                     student.setId(student.getId());
                     student.setName(student.getName());
@@ -52,13 +56,13 @@ public class StudentController {
 
     }
 
-    @PostMapping(value = "/addStudent", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/addStudent")
     public Student newStudent(@RequestBody Student newStudent) {
         return studentRepository.save(newStudent);
     }
 
     @DeleteMapping("/student/{id}")
-    public void deleteStudent(@PathVariable Long id) {
+    public void deleteStudent(@PathVariable int id) {
         studentRepository.deleteById(id);
     }
 }

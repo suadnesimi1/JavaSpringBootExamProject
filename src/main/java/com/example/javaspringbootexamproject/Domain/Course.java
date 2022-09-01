@@ -7,13 +7,13 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "course")
+
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @Column(name = "name")
+
     private String name;
 
     //provide the name of the field, which maps the relationship
@@ -26,18 +26,18 @@ public class Course {
     }
 
     @Autowired
-    public Course(Long id, String name, List<Student> students) {
+    public Course(int id, String name, List<Student> students) {
         this.id = id;
         this.name = name;
         this.students = students;
 
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

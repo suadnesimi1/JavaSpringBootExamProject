@@ -25,7 +25,7 @@ public class CourseController {
         return courseRepository.findAll();
     }
     @PutMapping("/course/{id}")
-    public Course updateCourse(@RequestBody Course updateCourse, @PathVariable Long id) {
+    public Course updateCourse(@RequestBody Course updateCourse, @PathVariable int id) {
         return courseRepository.findById(id).map(course -> {
                     course.setId(course.getId());
                     course.setName(course.getName());
@@ -44,7 +44,7 @@ public class CourseController {
     }
 
     @DeleteMapping("/course/{id}")
-    public void deleteCourse(@PathVariable Long id) {
+    public void deleteCourse(@PathVariable int id) {
         courseRepository.deleteById(id);
     }
 

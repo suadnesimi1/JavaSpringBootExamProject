@@ -1,7 +1,6 @@
 package com.example.javaspringbootexamproject.Controller;
 
 
-import com.example.javaspringbootexamproject.Domain.Faculty;
 import com.example.javaspringbootexamproject.Domain.University;
 import com.example.javaspringbootexamproject.Repository.UniversityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,7 @@ import java.util.List;
 @RequestMapping("/university")
 public class UniversityController {
 
-
+    @Autowired
     UniversityRepository universityRepository;
 
     @GetMapping("/all")

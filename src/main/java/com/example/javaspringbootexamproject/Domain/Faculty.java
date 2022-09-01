@@ -1,5 +1,6 @@
 package com.example.javaspringbootexamproject.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
@@ -7,13 +8,13 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "faculty")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Faculty {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
-    @Column(name = "name")
+
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -29,16 +30,17 @@ public class Faculty {
     }
 
     @Autowired
-    public Faculty(Long id, String name, University university) {
+    public Faculty(int id, String name, University university) {
         this.id = id;
         this.name = name;
+        this.university=university;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
